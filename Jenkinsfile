@@ -32,9 +32,8 @@ pipeline {
 		stage('Set current kubectl context') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'ecr_credentials') {
-					bash '''
-						aws eks --region us-west-2 update-kubeconfig --name capstone
-						kubectl config use-context /var/lib/jenkins/.kube/config
+					sh '''
+						ubectl config use-context arn:aws:eks:us-west-2:513423739163:cluster/capstone
 					'''
 				}
 			}
