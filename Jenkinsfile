@@ -28,7 +28,15 @@ pipeline {
 				}
 			}
 		}
-
+		stage('Create conf file cluster') {
+			steps {
+				withAWS(region:'us-east-1', credentials:'ecr_credentials') {
+					sh '''
+						aws eks --region us-west-2 update-kubeconfig --name capstone
+					'''
+				}
+			}
+		}
 		stage('Set current kubectl context') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'ecr_credentials') {
