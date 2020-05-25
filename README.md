@@ -35,3 +35,16 @@ $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 6. The next screen gives you the choice of installing recommended plugins, or selecting specific plugins - choose the Install suggested plugins option, which quickly begins the installation process. 
 
 7. When installation is complete, you are prompted to set up the first admin user. Create the admin user and make note of both the user and password to use in the future.
+
+## Install BlueOcean on Jenkins
+1. "Blue Ocean" and other required plugins need to be installed. Logged in as an admin, go to the top left, click 'Jenkins', then 'manage Jenkins', and select 'Manage Plugins'.
+
+2. Use the "Available" tab, filter by "Blue Ocean," select the first option ("BlueOcean aggregator") and install without a restart.
+
+3. Filter once again for "pipeline-aws" and install, this time selecting "Download now and install after restart."
+
+4. Once all plugins are installed, Jenkins will restart. If it hasn't restarted, run the following in the VM:
+```
+sudo systemctl restart jenkins
+```
+5. Verify everything is working for Blue Ocean by logging in. An "Open Blue Ocean" link should show up in the sidebar. Click it, and it will take you to the "Blue Ocean" screen, where we will have to add a project.
